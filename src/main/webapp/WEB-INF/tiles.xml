@@ -5,40 +5,54 @@
 <tiles-definitions>
 
 	<!-- Definition -->
-	<definition name="base.definition" template="/WEB-INF/layout/template.jsp">
-		<put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
-		<put-attribute name="common-body" value="/WEB-INF/layout/common-body.jsp" />
+	<definition name="base.definition"
+		template="/WEB-INF/layout/template.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/layout/header.jsp" />
+		<put-attribute name="common-body"
+			value="/WEB-INF/layout/common-body.jsp" />
 		<put-attribute name="body" />
-		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layout/footer.jsp" />
 	</definition>
-	
+
 	<!-- Login Page Definition -->
-	<definition name="login.form" template="/WEB-INF/layout/template-login.jsp">
+	<definition name="login.form"
+		template="/WEB-INF/layout/template-login.jsp">
 		<put-attribute name="body" />
-		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/layout/footer.jsp" />
 	</definition>
-	
-	
+
+
 
 	<!-- Home page -->
 	<definition name="home" extends="base.definition">
-		<put-attribute name="body" value="/WEB-INF/views/UBRD0001.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/UBRD0001.jsp" />
 	</definition>
-  <!-- 게시판 -->
-  <definition name="board" extends="base.definition">
-    <put-attribute name="body" value="/WEB-INF/views/UBRD0002.jsp" />
-  </definition>
-	
+	<!-- 게시판 -->
+	<definition name="board" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/views/UBRD0002.jsp" />
+	</definition>
+	<!-- 게시물 -->
+	<definition name="board/view" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/views/UBRD0003.jsp" />
+	</definition>
 	<!-- 로그인 화면 -->
 	<definition name="login" extends="login.form">
-		<put-attribute name="body" value="/WEB-INF/views/UCM020100.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/UCM020100.jsp" />
 	</definition>
-	
+
 	<!-- 회원가입 -->
 	<definition name="singup" extends="base.definition">
-		<put-attribute name="body" value="/WEB-INF/views/UMBR0001.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/views/UMBR0001.jsp" />
 	</definition>
-	
+
 
 
 
