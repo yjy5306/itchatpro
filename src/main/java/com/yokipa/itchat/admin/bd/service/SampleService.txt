@@ -1,0 +1,35 @@
+package com.nthb.admn.cc.service;
+
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.nthb.admn.cc.vo.CCQNABDLVO;
+import com.nthb.admn.cc.vo.QnaPstSrchDTO;
+import com.nthb.core.vo.ResultMap;
+
+
+/**
+ * @Class : CustQuansService
+ * @Description : 고객문의 서비스 
+ * @Type: Service
+ * @Modification
+ * 
+ *  수정일      수정자              수정내용
+ *  ---------   ---------   -------------------------------
+ *  2018.08.26      ITU107      신규등록
+ *
+ */
+public interface CustQuansService {
+   
+   /**고객문의 목록 조회 */
+   public List<CCQNABDLVO> selCustQuansList(CCQNABDLVO vo) throws SQLException;
+   /**고객문의 목록조회 페이징처리 */
+   public ResultMap selCustQuansPagePrc(QnaPstSrchDTO dto) throws SQLException;
+   /**고객문의 상세 조회*/
+   public ResultMap selCustQuansDtlView(int qnaPstNo) throws SQLException;
+   /**고객문의 답변 */
+   public ResultMap updCustQuansRpl(CCQNABDLVO vo) throws SQLException;
+   
+   
+}

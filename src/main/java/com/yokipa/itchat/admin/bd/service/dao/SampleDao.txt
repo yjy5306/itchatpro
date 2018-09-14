@@ -1,0 +1,39 @@
+package com.nthb.admn.cc.service.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.mybatis.spring.annotation.MapperScan;
+
+import com.nthb.admn.cc.vo.CCQNABDLVO;
+import com.nthb.admn.cc.vo.QnaPstSrchDTO;
+
+/**
+ * @Class : CCQNABDLDAO
+ * @Description : 고객문의 등록,답변
+ * @Type : DAO
+ * @Modification
+ * 
+ *   수정일      수정자              수정내용
+ *  ---------   ---------   -------------------------------
+ *  2018.08.21      정찬용      신규
+ *
+ */
+
+@MapperScan("CCQNABDLDAO")
+public interface CCQNABDLDAO {
+
+    
+   /**문의 목록 조회 */
+   public List<CCQNABDLVO> list() throws SQLException;
+   
+   /** 문의 목록 페이징처리 */
+   public List<CCQNABDLVO> pageList(QnaPstSrchDTO qnaPstSrchDto) throws SQLException;
+   
+   /**문의 상세 조회 */
+   public CCQNABDLVO select(CCQNABDLVO ccqnabdlVo) throws SQLException;
+   
+   /**문의 답변 */
+   public int update(CCQNABDLVO ccqnabdlVo) throws SQLException;
+ 
+}

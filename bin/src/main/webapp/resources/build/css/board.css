@@ -1,0 +1,42 @@
+/*
+Author : 김준
+Scope : Borad.html, Detail.html 등
+*/
+.media {
+  margin-top: 20px;
+}
+
+.avatar-40 {
+  border-radius: 50%;
+  width: 40px;
+}
+
+.regdate {
+  font-size: 0.7em;
+  color: #555;
+}
+
+.cmt-content {
+  margin-bottom: 10px;
+}
+
+/*보드*/
+.brdNum {
+  font-size: 0.8rem;
+  align-self: center;
+  text-align: center
+}
+.brdCont a{
+  color: #333;
+}
+@media(max-width:992px) {
+  .brdInfo {
+    font-size: 0.8rem;
+    align-self: center;
+    color: #777;
+  }
+
+  .brdInfo:before {
+    content: attr(data-colName);
+  }
+}

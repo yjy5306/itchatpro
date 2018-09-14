@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<!-- 
+   파일명 : BDCTGRDAO.xml
+   파일설명 : 게시판카테고리
+   변경내용
+      수정일      수정자              수정내용
+   ========      ======      ==============   
+   2018.08.22     김준      신규등록
+ -->
+ 
+ <mapper namespace="com.yokipa.itchat.user.bd.service.dao.BDCTGRDAO">
+ 
+ <!--  게시판카테고리 목록 조회 -->
+ <select id="list" resultType="bdctgrVo">
+       SELECT /* com.yokipa.itchat.user.bd.service.dao.BDCTGRVO.select */
+        FROM
+           BDCTGR
+        ORDER BY
+           CTGR_NO DESC
+ </select> 
+ 
+ 
+ </mapper>

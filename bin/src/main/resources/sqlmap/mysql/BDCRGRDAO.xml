@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<!-- 
+   파일명 : CCQNABDL.xml
+   파일설명 : 고객문의답변 쿼리문
+   변경내용
+      수정일         수정자              수정내용
+   ========      ======      ==============   
+   2018.08.22      ITU107      신규등록
+ -->
+ 
+ <mapper namespace="com.yokipa.itchat.admin.bd.service.dao.BDCTGRDAO">
+ 
+ 
+ 
+ </mapper>

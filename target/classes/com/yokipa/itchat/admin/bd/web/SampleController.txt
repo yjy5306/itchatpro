@@ -1,0 +1,144 @@
+package com.nthb.admn.cc.web;
+
+import java.sql.SQLException;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.nthb.admn.cc.service.CustQuansService;
+import com.nthb.admn.cc.vo.CCQNABDLVO;
+import com.nthb.admn.cc.vo.QnaPstSrchDTO;
+import com.nthb.core.constant.ErrorCodeConstant;
+import com.nthb.core.vo.ResultMap;
+import com.nthb.core.web.NthbController;
+
+/**
+ * @Class : CustQuansController
+ * @Description : 고객문의답변 컨트롤러
+ * @Type: Controller
+ * @Modification
+ * 
+ *  수정일                    수정자              수정내용
+ *  ---------   ---------   -------------------------------
+ *  2018.08.26      ITU107      신규등록
+ *
+ */
+@Controller
+public class CustQuansController extends NthbController{
+
+   @Inject
+   CustQuansService custQuansService;
+   
+   
+   /**
+    * 문의답변 화면 호출
+    * @return
+    */
+   @RequestMapping(value="/center/request")
+   public void custQuansPage() throws Exception{
+      
+   }//custQuansList()
+   
+   
+   /**
+    * 문의답변 목록 페이징처리
+    * @param dto
+    * @return
+    */
+   @RequestMapping(value="/center/request/listPageProc", method=RequestMethod.POST)
+   public @ResponseBody ResultMap custQuansListPage(@RequestBody QnaPstSrchDTO dto) {
+      logger.debug("custQuansListPage");
+      ResultMap rmap = new ResultMap();
+      
+      logger.debug(dto.getNxt1keyval()+"키값");
+         
+      try {
+         rmap = custQuansService.selCustQuansPagePrc(dto);
+
+      } catch (SQLException e) {
+         logger.error(e.toString(), e);
+         
+         rmap.setErrC(ErrorCodeConstant.getError());
+         rmap.setErrMsg(ErrorCodeConstant.getMessage(rmap.getErrC()));
+      }
+      return rmap;
+   }//custQuansListPage()
+   
+   
+
+   /**
+    * 고객문의 상세 조회
+    * @param request
+    * @return
+    */
+   @RequestMapping(value="/center/request/detail", method=RequestMethod.GET)
+   public ResultMap custQuansDtlSrch(HttpServletRequest request) {
+      logger.debug(request.getParameter("qnaPstNo")+"체크");
+      ResultMap rmap = new ResultMap();
+      
+      int qnaPstNo = Integer.parseInt(request.getParameter("qnaPstNo"));
+     
+      
+      
+      try {
+         
+         rmap = custQuansService.selCustQuansDtlView(qnaPstNo);
+
+      } catch (SQLException e) {
+         logger.error(e.toString(), e);
+         
+         rmap.setErrC(ErrorCodeConstant.getError());
+         rmap.setErrMsg(ErrorCodeConstant.getMessage(rmap.getErrC()));
+      }
+      return rmap;
+   }//custQuansDtlSrch()   
+   
+
+   /**
+    * 고객문의 답변
+    * @param vo
+    * @return
+    */
+   @RequestMapping(value="/center/request/cmntrpl", method=RequestMethod.GET)
+   public @ResponseBody ResultMap custQueansRpl(HttpServletRequest request) {
+      logger.debug("custQueansRpl");
+      ResultMap rmap = new ResultMap();
+      CCQNABDLVO vo = new CCQNABDLVO();
+      String fstRgtDtm = request.getParameter("fstRgtWkrId");
+      
+      vo.setRplCont(request.getParameter("rplCont"));
+      vo.setRplMgrNo(request.getParameter("rplMgrNo"));
+      vo.setRplDtm(request.getParameter("rplDtm"));
+      
+/*      if(fstRgtDtm == null) {
+         vo.setFstRgtWkrId(fstRgtDtm);
+         vo.setFstRgtDtm(request.getParameter("fstRgtDtm"));
+         vo.setLstMdfWkrId(request.getParameter("lstMdfWkrId"));
+         vo.setLstMdfDtm(request.getParameter("lstMdfDtm"));
+      }else {
+         vo.setLstMdfWkrId(request.getParameter("lstMdfWkrId"));
+         vo.setLstMdfDtm(request.getParameter("lstMdfDtm"));
+      }*/
+      try {
+         rmap = custQuansService.updCustQuansRpl(vo);
+         
+
+      } catch (SQLException e) {
+         logger.error(e.toString(), e);
+         
+         rmap.setErrC(ErrorCodeConstant.getError());
+         rmap.setErrMsg(ErrorCodeConstant.getMessage(rmap.getErrC()));
+      }
+      return rmap;
+   }//custQueansRpl()
+   
+   /**알림방식  */
+   
+   
+}//class

@@ -1,0 +1,103 @@
+package com.nthb.admn.cc.service.impl;
+
+
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.nthb.admn.cc.service.CustQuansService;
+import com.nthb.admn.cc.service.dao.CCQNABDLDAO;
+import com.nthb.admn.cc.vo.CCQNABDLVO;
+import com.nthb.admn.cc.vo.QnaPstSrchDTO;
+import com.nthb.admn.op.vo.CMGRPCDMVO;
+import com.nthb.core.constant.CommonConstant;
+import com.nthb.core.constant.ErrorCodeConstant;
+import com.nthb.core.vo.ResultMap;
+import com.nthb.core.web.NthbController;
+
+/**
+ * @Class : CustQuansServiceImpl
+ * @Description : 고객문의 서비스 구현
+ * @Type: ServiceImpl
+ * @Modification
+ * 
+ *  수정일      수정자              수정내용
+ *  ---------   ---------   -------------------------------
+ *  2018.08.26      ITU107      신규등록
+ *
+ */
+@Service
+public class CustQuansServiceImpl extends NthbController implements CustQuansService {
+   
+   @Inject CCQNABDLDAO dao;
+
+   /**문의답변 목록 조회*/
+   @Override
+   public List<CCQNABDLVO> selCustQuansList(CCQNABDLVO vo) throws SQLException {
+      
+      return dao.list(vo);
+   }//selCustQuansList()
+   /**문의답변 목록 페이징처리 */
+   @Override
+   public ResultMap selCustQuansPagePrc(QnaPstSrchDTO dto) throws SQLException {
+      
+      ResultMap rmap = new ResultMap();
+      
+      rmap.setErrC(ErrorCodeConstant.getSuccess());
+      rmap.setErrMsg(ErrorCodeConstant.getMessage(rmap.getErrC()));
+
+
+      rmap.add("nxtPageFl", CommonConstant.getNo());
+      dto.setPagePerCnt(CommonConstant.getPagePerCount() + 1);
+      List<CCQNABDLVO> dataList = dao.pageList(dto);
+      // 조회된 목록이 존재하는 경우
+      if(dataList != null){
+         if(dataList.size() > CommonConstant.getPagePerCount()){
+            CCQNABDLVO vo = dataList.get(CommonConstant.getPagePerCount());
+            
+            logger.debug(dataList.size()+"데이타리스트 목록갯수 조회");
+            logger.debug(vo.getQnaPstNo()+"번호조회");  
+            // 페이지당목록수보다 조회된 목록수가 많으면 다음 페이지가 존재
+            rmap.add("nxt1keyVal", vo.getQnaPstNo());
+            rmap.add("nxtPageFl", CommonConstant.getYes());
+            dataList.remove(CommonConstant.getPagePerCount());
+         }
+      }
+      
+      rmap.add("list", dataList);
+      return rmap;
+      
+   }//CustQuansPagePrc()
+   /**문의답변 상세조회 */
+   @Override
+   public ResultMap selCustQuansDtlView(int qnaPstNo) throws SQLException {
+      
+      ResultMap rmap = new ResultMap();
+      CCQNABDLVO vo = new CCQNABDLVO();
+      
+      rmap.setErrC(ErrorCodeConstant.getSuccess());
+      rmap.setErrMsg(ErrorCodeConstant.getMessage(rmap.getErrC()));
+      
+      List<CCQNABDLVO> dataList = dao.list(vo);
+      
+      rmap.add("list",dataList);
+      
+      return rmap;
+   }//CustQuansDtlView()
+   /**문의답변 */
+   @Override
+   public ResultMap updCustQuansRpl(CCQNABDLVO vo) throws SQLException {
+      
+      ResultMap rmap = new ResultMap();
+      rmap.add("rpl",dao.update(vo));
+      return rmap;
+   }//CustQuansRpl()
+
+
+
+   
+}//class
