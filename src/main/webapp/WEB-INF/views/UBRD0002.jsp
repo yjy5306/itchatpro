@@ -15,13 +15,10 @@
    *
    */
 --%>
-<<<<<<< HEAD
-<h3>${ctgrId} 게시판</h3>
-=======
+<button type="button" class="btn btn-secondary btn-sm float-right" >글 작성</button>
 
-<h3>자유 게시판</h3>
-<button type="button" class="btn btn-secondary btn-sm" style="text-align: left">글 작성</button>
->>>>>>> branch 'master' of https://github.com/spectralfox05/itchat.git
+<h3>${ctgrId} 게시판</h3>
+
 <div class="d-none d-lg-block"
 	style="font-weight: bold; background-color: #eee; font-size: 0.8em;">
 	<div class="row">

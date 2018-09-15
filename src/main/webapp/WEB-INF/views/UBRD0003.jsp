@@ -18,24 +18,20 @@
 <div class="container">
 	<div class="card">
 		<div class="card-body">
-		<!-- 제목 -->
-			<h3 class="card-title">"IT정보 글입니다."</h3>
+			<!-- 제목 -->
+			<h3 class="card-title">${pstVo.pstTtl}</h3>
 			<div class="media">
 				<div class="media-body">
 					<h5 class="mt-0">
-						아무개 1<br> <span class="regdate">2018-09-07</span>
+						작성자<br> <span class="regdate">${pstVo.pstRgtDt}</span>
 					</h5>
 				</div>
 			</div>
-			<p class="card-text">Some quick example text to build on the card
-				title and make up the bulk of the card's content.</p>
-			<p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare
-				vel eu leo. Cum sociis natoque penatibus et magnis dis parturient
-				montes, nascetur ridiculus mus.</p>
+			${pstVo.pstCont}
 			<div class="text-center">
 				<button type="button" class="btn btn-outline-primary btn-sm pstRcmd"
 					data-toggle="button" aria-pressed="false" autocomplete="off">
-					<i class="far fa-thumbs-up"></i> 0
+					<i class="far fa-thumbs-up"></i> ${pstVo.viewGood}
 				</button>
 			</div>
 			<!-- #댓글 -->
@@ -56,7 +52,7 @@
 					<p class="cmt-content">안녕하세요 반갑습니다.</p>
 				</div>
 			</div>
-				
+
 		</div>
 	</div>
 

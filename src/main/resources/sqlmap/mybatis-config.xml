@@ -8,6 +8,8 @@
     	<!-- member -->
     	 	<typeAlias alias="bdctgrVo" type="com.yokipa.itchat.user.bd.vo.BDCTGRVO"/>
     	 	<typeAlias alias="brdVo" type="com.yokipa.itchat.user.bd.vo.BRDVO"/>
+    	 	 <typeAlias alias="bdpstVo" type="com.yokipa.itchat.user.bd.vo.BDPSTVO"/>
+    	 	
     	<!-- customer counseling -->
  
 
