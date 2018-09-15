@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.yokipa.itchat.user.bd.service.BrdService;
 import com.yokipa.itchat.user.bd.service.CtgrService;
 import com.yokipa.itchat.user.bd.vo.BDCTGRVO;
+import com.yokipa.itchat.user.bd.vo.BRDPageMaker;
 import com.yokipa.itchat.user.bd.vo.BRDVO;
 
 /**
@@ -30,32 +31,41 @@ import com.yokipa.itchat.user.bd.vo.BRDVO;
 public class BoardController {
 	@Inject
 	private CtgrService ctgrService;
-	
+
 	@Inject
 	private BrdService brdService;
 
 	@RequestMapping(value = "/board", method = RequestMethod.GET)
-	public String home(@RequestParam("id") String id,BRDVO brd, Model model) {
+	public String home(@RequestParam("id")int no,BRDVO brd, Model model) {
+		System.out.println("board>>>>>>>>>>success!!");
+		System.out.println("board>>>>>>>>>>success!!");
+		System.out.println("board>>>>>>>>>>success!!");
+	
+		model.addAttribute("id", no);
+
 		try {
+			
 			List<BDCTGRVO> list = ctgrService.selCtgrList();
 			System.out.println(list);
 			brd.setPerPageNum(10);
 			model.addAttribute("ctgrList", list);
-			/*model.addAttribute("brdList",brdService.);
-			
+			model.addAttribute("brdList", brdService.selBrdList(brd));
+
+			// 페이지 처리
 			BRDPageMaker pageMaker = new BRDPageMaker();
-			pageMaker.setBrd(brd);*/
-			//pageMaker.setTotalCount();
+			pageMaker.setBrd(brd);
+			pageMaker.setTotalCount(brdService.selListCount(brd));
+			System.out.println("문제2>>>>>>>>>>"+brd);
+			System.out.println("페이지 데이터>>>>>>>" + pageMaker);
+			System.out.println("페이지 데이터>>>>>>>" + pageMaker);
+			System.out.println("페이지 데이터>>>>>>>" + pageMaker);
+			model.addAttribute("pageMaker", pageMaker);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		if (id != null) {
-			model.addAttribute("ctgrId", id);
-			return "board";
-		} else {
-			return "home";
-		}
 
+		return "board";
 	}
 
 }

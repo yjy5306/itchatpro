@@ -3,7 +3,7 @@ package com.yokipa.itchat.user.bd.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.yokipa.itchat.user.bd.vo.BoardPageDTO;
+import com.yokipa.itchat.user.bd.vo.BRDVO;
 
 /**
  * @Class : HomeConroller
@@ -17,7 +17,7 @@ import com.yokipa.itchat.user.bd.vo.BoardPageDTO;
  */
 public interface BrdService {
 	
-	public List<BoardPageDTO> selHomeBrdList(BoardPageDTO pageBean) throws SQLException;
-
-
+	public List<BRDVO> selBrdList(BRDVO brdvo) throws SQLException;
+	
+	public int selListCount(BRDVO brdvo)throws SQLException;
 }

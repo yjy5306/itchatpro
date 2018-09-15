@@ -11,13 +11,13 @@ import com.yokipa.itchat.user.bd.vo.BRDVO;
 public interface BRDDAO {
 	
 	   /**게시판 목록 조회 */
-	public List <BRDVO> boardList() throws SQLException; 
+	public List <BRDVO> boardList(BRDVO brdvo) throws SQLException; 
 	
 	   /**게시판 조회 */
 	public BRDVO view(BRDVO brdVo)throws SQLException;
 	
 	 /**게시판 총 갯수 */
-	public int listCount(BRDVO brdVo)throws SQLException;
+	public int listCount(BRDVO brdvo)throws SQLException;
 	
 	   /**게시판 등록 */ 	
 	public void insert(BRDVO brdVo)throws SQLException;

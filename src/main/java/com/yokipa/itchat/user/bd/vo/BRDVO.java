@@ -27,6 +27,11 @@ public class BRDVO {
     /** 게시물 총페이지 수 */
     private int perPageNum;
     
+    public BRDVO() {
+		this.page = 1;
+		this.perPageNum = 10;
+	}
+    
 	public void setPage(int page) {
 		
 		if(page <= 0) {

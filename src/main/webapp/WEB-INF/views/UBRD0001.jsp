@@ -14,7 +14,7 @@
    *
    */
 --%>
-<<<<<<< HEAD
+
 <c:forEach var="ctgr" items="${ctgrList}">
 	<h3>${ctgr.ctgrNm}게시판</h3>
 	<div class="d-none d-lg-block"
@@ -27,19 +27,7 @@
 			<div class="col-1" style="text-align: center">조회</div>
 			<div class="col-1" style="text-align: center">추천</div>
 		</div>
-=======
 
-<h3>자유 게시판</h3>
-<div class="d-none d-lg-block"
-	style="font-weight: bold; background-color: #eee; font-size: 0.8em;">
-	<div class="row">
-		<div class="col-1 " style="text-align: center">번호</div>
-		<div class="col-5">내용</div>
-		<div class="col-2">작성자</div>
-		<div class="col-2" style="text-align: center">날짜</div>
-		<div class="col-1" style="text-align: center">조회</div>
-		<div class="col-1" style="text-align: center">추천</div>
->>>>>>> branch 'master' of https://github.com/spectralfox05/itchat.git
 	</div>
 	<hr style="margin: 0;">
 	<!--게시물-->

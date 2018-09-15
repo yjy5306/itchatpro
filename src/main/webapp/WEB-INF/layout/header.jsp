@@ -30,7 +30,7 @@
 				<!--c tag foreach로 DB(ctgr_nm)을 가져와 돌려야 함 -->
 				<c:forEach var="ctgr" items="${ctgrList}">
 					<li class="nav-item<c:if test='${ctgrId==ctgr.ctgrNm}'> active</c:if>"><a class="nav-link"
-						href="/board?id=${ctgr.ctgrNm}">${ctgr.ctgrNm}</a></li>
+						href="/board?id=${ctgr.ctgrNo}">${ctgr.ctgrNm}</a></li>
 				</c:forEach>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">

@@ -13,17 +13,32 @@
  -->
  
  <mapper namespace="com.yokipa.itchat.user.bd.service.dao.BRDDAO">
- 
+ 	<sql id="selectColumn">
+		PST_NO as pstNo,
+		CTGR_NO as ctgrNo,
+		MBR_NO as mbrNo,
+		MBR_NM as mbrNm,
+		PST_TTL as pstTtl,
+		PST_CONT as pstCont,
+		VIEW_COUNT as viewCount,
+		VIEW_GOOD as viewGood,
+		PST_RGT_DT as pstRgtDt
+	</sql>
  <!--  게시판 목록 조회 -->
- <!-- <select id="list" resultType="brdVo">
+  <select id="boardList" resultType="brdVo">
        select 
-          *
+         <include refid="selectColumn" />
        from 
-          mbmgr
+          bdpst
        order by 
-          MGR_NO desc, MGR_RGT_DT; 
+          PST_NO desc, PST_RGT_DT desc
+          limit #{pageStart}, #{perPageNum};
+ </select>
+ 
+ <select id="listCount" resultType="int" parameterType="brdVo">
+ 	select count(*) from bdpst;
  </select> 
-  -->
+
  <!--  게시판 하나의 목록 조회 -->
 <!--  <select id="void" resultType="brdVo">
        select
