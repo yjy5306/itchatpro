@@ -14,7 +14,6 @@
    *
    */
 --%>
-
 <c:forEach var="ctgr" items="${ctgrList}">
 	<h3>${ctgr.ctgrNm}게시판</h3>
 	<div class="d-none d-lg-block"
@@ -32,7 +31,7 @@
 	<hr style="margin: 0;">
 	<!--게시물-->
 	<c:forEach var="i" items="${ctgrList}">
-		<div class="row" >
+		<div class="row">
 			<div class="d-none d-lg-block col-lg-1 brdNum">#13021</div>
 			<div class="col-lg-5 col-12 brdCont text-truncate">
 				<a href="">안녕하세요 만나서 반갑습니다.</a>

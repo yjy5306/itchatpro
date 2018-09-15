@@ -16,7 +16,7 @@
    */
 --%>
 
-${brdList }
+
 <button type="button" class="btn btn-secondary btn-sm float-right" >글 작성</button>
 <h3>${ctgrId} 게시판</h3>
 
