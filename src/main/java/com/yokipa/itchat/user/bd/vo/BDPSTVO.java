@@ -29,8 +29,6 @@ public class BDPSTVO {
 	private int viewGood;
 	/** 게시물 등록날짜 */
 	private Date pstRgtDt;
-	/** 게시물 수정날짜 */
-	private Date pstUdtDt;
 	public int getPstNo() {
 		return pstNo;
 	}
@@ -79,13 +77,7 @@ public class BDPSTVO {
 	public void setPstRgtDt(Date pstRgtDt) {
 		this.pstRgtDt = pstRgtDt;
 	}
-	public Date getPstUdtDt() {
-		return pstUdtDt;
-	}
-	public void setPstUdtDt(Date pstUdtDt) {
-		this.pstUdtDt = pstUdtDt;
-	}
-	
+
 
 	
 }
